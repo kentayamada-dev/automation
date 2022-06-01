@@ -3,7 +3,28 @@ const URL =
 const MY_SIZE = 'JP 26';
 const PRODUCT_NAME = 'NIKE AF1';
 
+const replaceBoolWithCheckBox = () => {
+  const activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = activeSpreadsheet.getSheetByName(PRODUCT_NAME);
+  const row = sheet.getLastRow();
+  const column = 3;
+  const numRows = 1;
+  const numColumns = 18;
+  const lastRowBoolValuesRange = sheet.getRange(
+    row,
+    column,
+    numRows,
+    numColumns
+  );
+  const validateCheckBox = SpreadsheetApp.newDataValidation();
+  validateCheckBox.requireCheckbox();
+  validateCheckBox.setAllowInvalid(false);
+  validateCheckBox.build();
+  lastRowBoolValuesRange.setDataValidation(validateCheckBox);
+};
+
 const generateSizeList = () => {
+  const unavailableSize = 31.5;
   const minSize = 23;
   const maxSize = 32;
   const step = 0.5;
@@ -12,7 +33,7 @@ const generateSizeList = () => {
     .fill()
     .map((_, idx) => {
       const size = minSize + idx * step;
-      if (size === 31.5) return undefined;
+      if (size === unavailableSize) return undefined;
       return `JP ${minSize + idx * step}`;
     })
     .filter(e => typeof e !== 'undefined');
@@ -41,22 +62,13 @@ const saveLog = (log, result) => {
   const today = new Date();
   const date = Utilities.formatDate(today, 'JST', 'yyyy/MM/dd');
   const time = Utilities.formatDate(today, 'JST', 'HH:m:ss');
-  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = spreadsheet.getSheetByName(PRODUCT_NAME);
+  const activeSpreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = activeSpreadsheet.getSheetByName(PRODUCT_NAME);
   sheet.appendRow([date, time, ...result, JSON.stringify(log)]);
-  const row = sheet.getLastRow();
-  const column = 3;
-  const numRows = 1;
-  const numColumns = result.length;
-  const lastRowBoolValues = sheet.getRange(row, column, numRows, numColumns);
-  const validateCheckBox = SpreadsheetApp.newDataValidation();
-  validateCheckBox.requireCheckbox();
-  validateCheckBox.setAllowInvalid(false);
-  validateCheckBox.build();
-  lastRowBoolValues.setDataValidation(validateCheckBox);
 };
 
 const sendLINE = () => {
+  const lineNotifyUrl = 'https://notify-api.line.me/api/notify';
   const messageText = `${PRODUCT_NAME}[${MY_SIZE}]がリストックされました🎉🎉🎉\n\n${URL}`;
   const token =
     PropertiesService.getScriptProperties().getProperty('LINE_NOTIFY_TOKEN');
@@ -69,8 +81,7 @@ const sendLINE = () => {
       message: messageText,
     },
   };
-  const url = 'https://notify-api.line.me/api/notify';
-  UrlFetchApp.fetch(url, options);
+  UrlFetchApp.fetch(lineNotifyUrl, options);
 };
 
 const phantomJSCloudScraping = URL => {
@@ -99,12 +110,13 @@ const main = () => {
     .iterate();
   const sizeList = generateSizeList();
   sizeList.forEach(size => {
-    const mySizeRawShoesData = rawShoesDataList.find(rawShoesData =>
+    const foundRawShoesData = rawShoesDataList.find(rawShoesData =>
       rawShoesData.includes(size)
     );
-    const isMySizeAvailable = mySizeRawShoesData.indexOf('disabled=""') === -1;
-    if (isMySizeAvailable && MY_SIZE === size) sendLINE();
-    stockAvailabilityList.push(isMySizeAvailable);
+    const isFoundShoesAvailable =
+      foundRawShoesData.indexOf('disabled=""') === -1;
+    if (isFoundShoesAvailable && MY_SIZE === size) sendLINE();
+    stockAvailabilityList.push(isFoundShoesAvailable);
   });
   saveLog(rawShoesDataList, stockAvailabilityList);
   deleteTrigger();
