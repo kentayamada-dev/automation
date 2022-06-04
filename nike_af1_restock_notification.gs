@@ -85,6 +85,7 @@ const sendLINE = () => {
 };
 
 const phantomJSCloudScraping = URL => {
+  let source = '';
   const key =
     PropertiesService.getScriptProperties().getProperty('PHANTOMJSCLOUD_ID');
   const option = {
@@ -95,9 +96,13 @@ const phantomJSCloudScraping = URL => {
   const payload = encodeURIComponent(JSON.stringify(option));
   const apiUrl =
     'https://phantomjscloud.com/api/browser/v2/' + key + '/?request=' + payload;
-  const response = UrlFetchApp.fetch(apiUrl);
-  const json = JSON.parse(response.getContentText());
-  const source = json['content']['data'];
+  try {
+    const response = UrlFetchApp.fetch(apiUrl);
+    const json = JSON.parse(response.getContentText());
+    source = json['content']['data'];
+  } catch (error) {
+    console.log(error);
+  }
   return source;
 };
 
@@ -110,12 +115,14 @@ const main = () => {
     .iterate();
   const sizeList = generateSizeList();
   sizeList.forEach(size => {
+    let isFoundShoesAvailable = false;
     const foundRawShoesData = rawShoesDataList.find(rawShoesData =>
       rawShoesData.includes(size)
     );
-    const isFoundShoesAvailable =
-      foundRawShoesData.indexOf('disabled=""') === -1;
-    if (isFoundShoesAvailable && MY_SIZE === size) sendLINE();
+    if (foundRawShoesData) {
+      isFoundShoesAvailable = foundRawShoesData.indexOf('disabled=""') === -1;
+      if (isFoundShoesAvailable && MY_SIZE === size) sendLINE();
+    }
     stockAvailabilityList.push(isFoundShoesAvailable);
   });
   saveLog(rawShoesDataList, stockAvailabilityList);
