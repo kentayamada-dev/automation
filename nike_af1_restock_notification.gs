@@ -106,25 +106,36 @@ const phantomJSCloudScraping = URL => {
   return source;
 };
 
+// const main = () => {
+//   const stockAvailabilityList = [];
+//   const html = phantomJSCloudScraping(URL);
+//   const rawShoesDataList = Parser.data(html)
+//     .from('name="skuAndSize"')
+//     .to('</div>')
+//     .iterate();
+//   const sizeList = generateSizeList();
+//   sizeList.forEach(size => {
+//     let isFoundShoesAvailable = false;
+//     const foundRawShoesData = rawShoesDataList.find(rawShoesData =>
+//       rawShoesData.includes(size)
+//     );
+//     if (foundRawShoesData) {
+//       isFoundShoesAvailable = foundRawShoesData.indexOf('disabled=""') === -1;
+//       if (isFoundShoesAvailable && MY_SIZE === size) sendLINE();
+//     }
+//     stockAvailabilityList.push(isFoundShoesAvailable);
+//   });
+//   saveLog(rawShoesDataList, stockAvailabilityList);
+//   deleteTrigger();
+// };
+
+
+
 const main = () => {
-  const stockAvailabilityList = [];
-  const html = phantomJSCloudScraping(URL);
+  const html = phantomJSCloudScraping("https://www.sacnilk.com/articles/internet/instagram/List_of_MostFollowed_Instagram_Handle_in_World?hl=en");
   const rawShoesDataList = Parser.data(html)
-    .from('name="skuAndSize"')
-    .to('</div>')
+    .from('<a href="https://www.instagram.com/')
+    .to('</a>')
     .iterate();
-  const sizeList = generateSizeList();
-  sizeList.forEach(size => {
-    let isFoundShoesAvailable = false;
-    const foundRawShoesData = rawShoesDataList.find(rawShoesData =>
-      rawShoesData.includes(size)
-    );
-    if (foundRawShoesData) {
-      isFoundShoesAvailable = foundRawShoesData.indexOf('disabled=""') === -1;
-      if (isFoundShoesAvailable && MY_SIZE === size) sendLINE();
-    }
-    stockAvailabilityList.push(isFoundShoesAvailable);
-  });
-  saveLog(rawShoesDataList, stockAvailabilityList);
-  deleteTrigger();
+  console.log(rawShoesDataList)
 };
