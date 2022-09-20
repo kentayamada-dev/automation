@@ -1,0 +1,4 @@
+tweepy
+selenium
+webdriver-manager
+retry
