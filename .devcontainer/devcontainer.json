@@ -22,15 +22,22 @@
 				"python.linting.pylintArgs": [
 					"--disable=C0111",
 					"--max-line-length=200"
-				]
+				],
+				"python.formatting.provider": "black",
+				"[python]": {
+					"editor.formatOnPaste": false,
+					"editor.formatOnSaveMode": "file"
+				}
 			},
 			"extensions": [
 				"ms-python.python",
 				"ms-python.vscode-pylance",
-				"eamodio.gitlens"
+				"eamodio.gitlens",
+				"Fooxly.themeswitch",
+				"albert.TabOut"
 			]
 		}
 	},
-	"postCreateCommand": "make install-chrome && make install-twitter-requirements",
+	"postCreateCommand": "make install-packages",
 	"remoteUser": "vscode"
 }

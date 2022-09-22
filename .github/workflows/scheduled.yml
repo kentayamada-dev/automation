@@ -1,0 +1,71 @@
+name: Scheduled Workflow
+
+on:
+  schedule:
+    - cron: '0 7-24/3 * * *'
+
+jobs:
+  Post:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    outputs:
+      instagram_output: ${{ steps.instagram_id.outputs.status }}
+      twitter_output: ${{ steps.twitter_id.outputs.status }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install chrome
+        run: make install-chrome
+
+      - name: Install necessary packages
+        run: make install-packages
+
+      - name: Twitter
+        id: twitter_status
+        continue-on-error: true
+        run: python3 twitter.py
+        env:
+          TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
+          TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+
+        - name: Save twitter output
+          id: twitter_id
+          run: echo "::set-output name=status::${{ steps.twitter_status.outcome }}"
+
+      - name: Instagram
+        id: instagram_status
+        continue-on-error: true
+        run: python3 instagram.py
+        env:
+          INSTAGRAM_BUSINESS_ACCOUNT_ID: ${{ secrets.INSTAGRAM_BUSINESS_ACCOUNT_ID }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+
+      - name: Save instagram output
+        id: instagram_id
+        run: echo "::set-output name=status::${{ steps.instagram_status.outcome }}"
+
+      - name: Print output summmary
+        run: echo '<table><tr><th>SNS</th><th>Result</th></tr><tr><td align="center">Instagram</td><td align="center">${{ steps.instagram_status.outcome }}</td></tr><tr><td align="center">Twitter</td><td align="center">${{ steps.twitter_status.outcome }}</td></tr></table>' >> $GITHUB_STEP_SUMMARY
+
+      - name: Commit updated instagram-post-data.json
+        uses: EndBug/add-and-commit@v9.1.0
+        with:
+          add: instagram-post-data.json
+          pull: origin main
+
+  Line-Notify:
+    if: failure() && needs.Post.outputs.instagram_output != 'success' || needs.Post.outputs.twitter_output != 'success'
+    needs: Post
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Send line notification
+        uses: snow-actions/line-notify@v1.0.0
+        with:
+          access_token: ${{ secrets.LINE_NOTIFY_TOKEN }}
+          message: "⚠️失敗しました\n\nInstagram: ${{ needs.Post.outputs.instagram_output }}\nTwitter: ${{ needs.Post.outputs.twitter_output }}\n\n${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

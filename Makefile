@@ -5,6 +5,6 @@ install-chrome:
 	&& sudo apt-get update \
 	&& sudo apt-get -y install --no-install-recommends google-chrome-stable
 
-.PHONY: install-twitter-requirements
-install-twitter-requirements:
-	pip3 --disable-pip-version-check --no-cache-dir install -r twitter-requirements.txt
+.PHONY: install-packages
+install-packages:
+	pip3 --disable-pip-version-check --no-cache-dir install -r common-requirements.txt -r twitter-requirements.txt -r instagram-requirements.txt
