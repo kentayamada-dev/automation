@@ -8,6 +8,7 @@ from os import environ
 from requests import post, get
 from dotenv import load_dotenv
 from selenium.webdriver.common.by import By
+from retry import retry
 from chrome_driver import get_chrome_driver
 
 BASE_URL = "https://graph.facebook.com/v15.0"
@@ -55,7 +56,9 @@ def save_post_data(permalink: str, timestamp: str, image_url: str):
 
 
 def post_image(image_url: str):
-    hash_tags = " ".join(sample(HASH_TAG_LIST, choice(range(5, 8))))+" #legit_art_feed"
+    hash_tags = (
+        " ".join(sample(HASH_TAG_LIST, choice(range(5, 8)))) + " #legit_art_feed"
+    )
     media_url = f"{BASE_URL}/{environ['INSTAGRAM_BUSINESS_ACCOUNT_ID']}"
     upload_url = f"{media_url}/media"
     publish_url = f"{media_url}/media_publish"
@@ -80,13 +83,18 @@ def post_image(image_url: str):
     return post_data
 
 
-if __name__ == "__main__":
-    load_dotenv()
+@retry(tries=5, delay=5)
+def get_image():
     chrome_driver = get_chrome_driver()
     chrome_driver.get(f"https://lexica.art/?q={choice(FAVORITE_LIST)}")
     image = choice(chrome_driver.find_elements(By.TAG_NAME, "img"))
     chrome_driver.execute_script("arguments[0].scrollIntoView();", image)
     image.click()
-    generated_image_url = chrome_driver.current_url
-    data = post_image(image.get_attribute("src"))
+    return image.get_attribute("src"), chrome_driver.current_url
+
+
+if __name__ == "__main__":
+    load_dotenv()
+    image_src, generated_image_url = get_image()
+    data = post_image(image_src)
     save_post_data(data["permalink"], data["timestamp"], generated_image_url)
