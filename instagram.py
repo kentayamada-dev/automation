@@ -55,7 +55,7 @@ def save_post_data(permalink: str, timestamp: str, image_url: str):
 
 
 def post_image(image_url: str):
-    hash_tags = " ".join(sample(HASH_TAG_LIST, choice(range(5, 10))))
+    hash_tags = " ".join(sample(HASH_TAG_LIST, choice(range(5, 8))))+" #legit_art_feed"
     media_url = f"{BASE_URL}/{environ['INSTAGRAM_BUSINESS_ACCOUNT_ID']}"
     upload_url = f"{media_url}/media"
     publish_url = f"{media_url}/media_publish"
