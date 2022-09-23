@@ -65,8 +65,12 @@ def post_image(image_url: str):
         "caption": hash_tags,
         "access_token": environ["INSTAGRAM_ACCESS_TOKEN"],
     }
-    upload_response = post(upload_url, timeout=(3.0, 9.0), params=upload_params)
-    container_id = upload_response.json()["id"]
+    try:
+        upload_response = post(upload_url, timeout=(3.0, 9.0), params=upload_params)
+        container_id = upload_response.json()["id"]
+    # pylint: disable=broad-except
+    except Exception as exception_message:
+        print(f"Response: {upload_response.json()}\nError Message: {exception_message}")
     publish_params = {
         "creation_id": container_id,
         "access_token": environ["INSTAGRAM_ACCESS_TOKEN"],
@@ -84,11 +88,16 @@ def post_image(image_url: str):
 @retry(tries=5, delay=5)
 def get_image():
     data = choice(
-        get(
-            f"https://lexica.art/api/v1/search?q={choice(FAVORITE_LIST)}",
-            timeout=(3.0, 9.0),
-        ).json()["images"]
+        [
+            data
+            for data in get(
+                f"https://lexica.art/api/v1/search?q={choice(FAVORITE_LIST)}",
+                timeout=(3.0, 9.0),
+            ).json()["images"]
+            if 320 < int(data["width"]) < 1440
+        ]
     )
+
     return data
 
 
