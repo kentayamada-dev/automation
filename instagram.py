@@ -7,9 +7,7 @@ from json import dump, load
 from os import environ
 from requests import post, get
 from dotenv import load_dotenv
-from selenium.webdriver.common.by import By
 from retry import retry
-from chrome_driver import get_chrome_driver
 
 BASE_URL = "https://graph.facebook.com/v15.0"
 HASH_TAG_LIST = [
@@ -38,17 +36,17 @@ HASH_TAG_LIST = [
     "#最高",
 ]
 FAVORITE_LIST = [
-    "573ca541-fbc1-47bf-9827-f4f781efeee6",
-    "fad7742d-2b9b-4353-b8ae-aab6bc413336",
-    "e226a552-7c8b-4ae4-ace6-ddb4ba971f19",
+    "https://media.istockphoto.com/photos/ink-water-explosion-harmony-balance-blue-pink-picture-id1172072668z",
+    "https://image.lexica.art/md/533d1efe-5326-4071-b23c-f7444f4700f9",
+    "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+    "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/6de67f151331235.Y3JvcCw5NjksNzU4LDIwOCw2MDQ.jpg",
 ]
 
 
-def save_post_data(permalink: str, timestamp: str, image_url: str):
+def save_post_data(new_data: dict):
     with open("instagram-post-data.json", "r", encoding="utf-8") as file:
         saved_data = load(file)
         file.close()
-    new_data = {"timestamp": timestamp, "permalink": permalink, "image_url": image_url}
     saved_data.append(new_data)
     with open("instagram-post-data.json", "w", encoding="utf-8") as file:
         dump(saved_data, file, indent=2)
@@ -85,16 +83,19 @@ def post_image(image_url: str):
 
 @retry(tries=5, delay=5)
 def get_image():
-    chrome_driver = get_chrome_driver()
-    chrome_driver.get(f"https://lexica.art/?q={choice(FAVORITE_LIST)}")
-    image = chrome_driver.find_element(By.TAG_NAME, "img")
-    chrome_driver.execute_script("arguments[0].scrollIntoView();", image)
-    image.click()
-    return image.get_attribute("src"), chrome_driver.current_url
+    data = choice(
+        get(
+            f"https://lexica.art/api/v1/search?q={choice(FAVORITE_LIST)}",
+            timeout=(3.0, 9.0),
+        ).json()["images"]
+    )
+    return data
 
 
 if __name__ == "__main__":
     load_dotenv()
-    image_src, generated_image_url = get_image()
-    data = post_image(image_src)
-    save_post_data(data["permalink"], data["timestamp"], generated_image_url)
+    image_data = get_image()
+    post_response = post_image(image_data["src"])
+    image_data["instagram_permalink"] = post_response["permalink"]
+    image_data["instagram_timestamp"] = post_response["timestamp"]
+    save_post_data(image_data)
