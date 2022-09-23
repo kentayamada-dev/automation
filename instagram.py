@@ -5,7 +5,6 @@
 from random import choice, sample
 from json import dump, load
 from os import environ
-from time import sleep
 from requests import post, get
 from dotenv import load_dotenv
 from selenium.webdriver.common.by import By
@@ -87,7 +86,6 @@ def post_image(image_url: str):
 @retry(tries=5, delay=5)
 def get_image():
     chrome_driver = get_chrome_driver()
-    sleep(5)
     chrome_driver.get(f"https://lexica.art/?q={choice(FAVORITE_LIST)}")
     image = choice(chrome_driver.find_elements(By.TAG_NAME, "img"))
     chrome_driver.execute_script("arguments[0].scrollIntoView();", image)
