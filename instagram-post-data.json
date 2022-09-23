@@ -58,5 +58,20 @@
     "promptid": "c9d9fea0-cc3b-439d-b663-8892f6415cff",
     "instagram_permalink": "https://www.instagram.com/p/Ci105yEOY2n/",
     "instagram_timestamp": "2022-09-23T07:34:56+0000"
+  },
+  {
+    "id": "63558fea-39e9-4b65-b71f-6e74b6a2bf39",
+    "gallery": "https://lexica.art?q=63558fea-39e9-4b65-b71f-6e74b6a2bf39",
+    "src": "https://lexica-serve-encoded-images.sharif.workers.dev/md/63558fea-39e9-4b65-b71f-6e74b6a2bf39",
+    "srcSmall": "https://lexica-serve-encoded-images.sharif.workers.dev/sm/63558fea-39e9-4b65-b71f-6e74b6a2bf39",
+    "prompt": "multi color smoke, one smoke is the shape of a small ( outstretched ribbed wings and head of an ancient dragon ), billowy, hdr, 8 k, 4 k ",
+    "width": 512,
+    "height": 512,
+    "seed": "1539807966",
+    "grid": false,
+    "model": "stable-diffusion",
+    "promptid": "bab0ed52-6847-416b-94ce-5f7062585b7d",
+    "instagram_permalink": "https://www.instagram.com/p/Ci2p8XPB8co/",
+    "instagram_timestamp": "2022-09-23T15:18:25+0000"
   }
 ]
