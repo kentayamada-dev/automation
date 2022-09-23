@@ -5,11 +5,11 @@
 from random import choice, sample
 from json import dump, load
 from os import environ
+from time import sleep
 from requests import post, get
 from dotenv import load_dotenv
 from selenium.webdriver.common.by import By
 from retry import retry
-from time import sleep
 from chrome_driver import get_chrome_driver
 
 BASE_URL = "https://graph.facebook.com/v15.0"
