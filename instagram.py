@@ -87,7 +87,7 @@ def post_image(image_url: str):
 def get_image():
     chrome_driver = get_chrome_driver()
     chrome_driver.get(f"https://lexica.art/?q={choice(FAVORITE_LIST)}")
-    image = choice(chrome_driver.find_elements(By.TAG_NAME, "img"))
+    image = chrome_driver.find_element(By.TAG_NAME, "img")
     chrome_driver.execute_script("arguments[0].scrollIntoView();", image)
     image.click()
     return image.get_attribute("src"), chrome_driver.current_url
