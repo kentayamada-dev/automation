@@ -5,15 +5,18 @@
 from random import choice, sample
 from json import dump, load
 from os import environ
-from requests import post, get
 from dotenv import load_dotenv
 from retry import retry
+from requests_with_error_handling import (
+    get_with_error_handling,
+    post_with_error_handling,
+)
 
 BASE_URL = "https://graph.facebook.com/v15.0"
 HASH_TAG_LIST = [
     "#photooftheday",
     "#instagood",
-    "#JKブランド"
+    "#JKブランド",
     "#tbt",
     "#art",
     "#picoftheday",
@@ -36,10 +39,10 @@ HASH_TAG_LIST = [
     "#最高",
 ]
 FAVORITE_LIST = [
-    "https://images.unsplash.com/photo-1533109721025-d1ae7ee7c1e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    "https://image.lexica.art/md/aeaca738-b54e-4e3e-88d9-1b480d3e54fe",
     "https://image.lexica.art/md/533d1efe-5326-4071-b23c-f7444f4700f9",
-    "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-    "https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+    "https://image.lexica.art/md/3028dc93-6ee9-4268-b8c6-e0280e4b4fb9",
+    "https://image.lexica.art/md/09e02a01-9c99-45d7-bceb-c05fa5712adf",
 ]
 
 
@@ -65,23 +68,18 @@ def post_image(image_url: str):
         "caption": hash_tags,
         "access_token": environ["INSTAGRAM_ACCESS_TOKEN"],
     }
-    try:
-        upload_response = post(upload_url, timeout=(3.0, 9.0), params=upload_params)
-        container_id = upload_response.json()["id"]
-    # pylint: disable=broad-except
-    except Exception as exception_message:
-        print(f"Response: {upload_response.json()}\nError Message: {exception_message}")
+    container_id = post_with_error_handling(url=upload_url, params=upload_params)["id"]
     publish_params = {
         "creation_id": container_id,
         "access_token": environ["INSTAGRAM_ACCESS_TOKEN"],
     }
-    post_id = post(publish_url, timeout=(3.0, 9.0), params=publish_params).json()["id"]
+    post_id = post_with_error_handling(url=publish_url, params=publish_params)["id"]
     post_url = f"{BASE_URL}/{post_id}"
     post_params = {
         "access_token": environ["INSTAGRAM_ACCESS_TOKEN"],
         "fields": "permalink, timestamp",
     }
-    post_data = get(post_url, timeout=(3.0, 9.0), params=post_params).json()
+    post_data = get_with_error_handling(post_url, params=post_params)
     return post_data
 
 
@@ -90,10 +88,9 @@ def get_image():
     data = choice(
         [
             data
-            for data in get(
-                f"https://lexica.art/api/v1/search?q={choice(FAVORITE_LIST)}",
-                timeout=(3.0, 9.0),
-            ).json()["images"]
+            for data in get_with_error_handling(
+                f"https://lexica.art/api/v1/search?q={choice(FAVORITE_LIST)}"
+            )["images"]
             if 320 < int(data["width"]) < 1440
         ]
     )
@@ -104,7 +101,7 @@ def get_image():
 if __name__ == "__main__":
     load_dotenv()
     image_data = get_image()
-    post_response = post_image(image_data["src"])
-    image_data["instagram_permalink"] = post_response["permalink"]
-    image_data["instagram_timestamp"] = post_response["timestamp"]
+    post_image_response = post_image(image_data["src"])
+    image_data["instagram_permalink"] = post_image_response["permalink"]
+    image_data["instagram_timestamp"] = post_image_response["timestamp"]
     save_post_data(image_data)
