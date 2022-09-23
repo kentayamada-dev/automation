@@ -36,10 +36,10 @@ HASH_TAG_LIST = [
     "#最高",
 ]
 FAVORITE_LIST = [
-    "https://media.istockphoto.com/photos/ink-water-explosion-harmony-balance-blue-pink-picture-id1172072668z",
+    "https://images.unsplash.com/photo-1533109721025-d1ae7ee7c1e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
     "https://image.lexica.art/md/533d1efe-5326-4071-b23c-f7444f4700f9",
     "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-    "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/6de67f151331235.Y3JvcCw5NjksNzU4LDIwOCw2MDQ.jpg",
+    "https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
 ]
 
 
