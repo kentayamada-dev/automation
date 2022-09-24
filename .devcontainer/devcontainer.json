@@ -1,8 +1,7 @@
 {
-	"name": "Automation",
+	"name": "automation",
 	"build": {
-		"dockerfile": "Dockerfile",
-		"context": ".."
+		"dockerfile": "Dockerfile"
 	},
 	"customizations": {
 		"vscode": {
