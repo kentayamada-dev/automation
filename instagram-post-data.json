@@ -73,5 +73,20 @@
     "promptid": "bab0ed52-6847-416b-94ce-5f7062585b7d",
     "instagram_permalink": "https://www.instagram.com/p/Ci2p8XPB8co/",
     "instagram_timestamp": "2022-09-23T15:18:25+0000"
+  },
+  {
+    "id": "111b8cbd-30b4-4d95-903a-b96ea0ca583e",
+    "gallery": "https://lexica.art?q=111b8cbd-30b4-4d95-903a-b96ea0ca583e",
+    "src": "https://lexica-serve-encoded-images.sharif.workers.dev/md/111b8cbd-30b4-4d95-903a-b96ea0ca583e",
+    "srcSmall": "https://lexica-serve-encoded-images.sharif.workers.dev/sm/111b8cbd-30b4-4d95-903a-b96ea0ca583e",
+    "prompt": "lights of a TR3B aircraft in the night sky in a forest, 4k, high detail, high-resolution photograph, professional photography, ultra-detail",
+    "width": 512,
+    "height": 512,
+    "seed": "1781447805",
+    "grid": false,
+    "model": "stable-diffusion",
+    "promptid": "ec522010-5633-4490-83d5-0499e7aa6a15",
+    "instagram_permalink": "https://www.instagram.com/p/Ci32FODMKMm/",
+    "instagram_timestamp": "2022-09-24T02:23:42+0000"
   }
 ]
