@@ -92,6 +92,7 @@ def get_image():
                 f"https://lexica.art/api/v1/search?q={choice(FAVORITE_LIST)}"
             )["images"]
             if 320 < int(data["width"]) < 1440
+            # https://developers.facebook.com/docs/instagram-api/reference/ig-user/media/
             and 0.8 < int(data["width"]) / int(data["height"]) < 1.91
         ]
     )
