@@ -8,3 +8,11 @@ install-chrome:
 .PHONY: install-packages
 install-packages:
 	pip3 --disable-pip-version-check --no-cache-dir install -r common-requirements.txt -r twitter-requirements.txt -r instagram-requirements.txt
+
+.PHONY: instagram
+instagram:
+	python3 instagram.py
+
+.PHONY: twitter
+twitter:
+	python3 twitter.py

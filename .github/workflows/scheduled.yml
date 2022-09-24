@@ -26,7 +26,7 @@ jobs:
       - name: Twitter
         id: twitter_status
         continue-on-error: true
-        run: python3 twitter.py
+        run: make twitter
         env:
           TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
           TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
@@ -40,7 +40,7 @@ jobs:
       - name: Instagram
         id: instagram_status
         continue-on-error: true
-        run: python3 instagram.py
+        run: make instagram
         env:
           INSTAGRAM_BUSINESS_ACCOUNT_ID: ${{ secrets.INSTAGRAM_BUSINESS_ACCOUNT_ID }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
