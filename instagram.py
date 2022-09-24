@@ -3,6 +3,7 @@
 # https://developers.facebook.com/tools/explorer/
 
 from random import choice, sample
+from datetime import datetime, timedelta, timezone
 from json import dump, load
 from os import environ
 from dotenv import load_dotenv
@@ -38,12 +39,25 @@ HASH_TAG_LIST = [
     "#インスタ映え",
     "#最高",
 ]
-FAVORITE_LIST = [
-    "https://image.lexica.art/md/aeaca738-b54e-4e3e-88d9-1b480d3e54fe",
-    "https://image.lexica.art/md/533d1efe-5326-4071-b23c-f7444f4700f9",
-    "https://image.lexica.art/md/3028dc93-6ee9-4268-b8c6-e0280e4b4fb9",
-    "https://image.lexica.art/md/09e02a01-9c99-45d7-bceb-c05fa5712adf",
-]
+FAVORITE_LIST = {
+    "data_1": {
+        "time": [10, 14, 18, 22],
+        "url": "https://image.lexica.art/md/aeaca738-b54e-4e3e-88d9-1b480d3e54fe",
+    },
+    "data_2": {
+        "time": [11, 15, 19, 23],
+        "url": "https://image.lexica.art/md/533d1efe-5326-4071-b23c-f7444f4700f9",
+    },
+    "data_3": {
+        "time": [12, 16, 20],
+        "url": "https://image.lexica.art/md/3028dc93-6ee9-4268-b8c6-e0280e4b4fb9",
+    },
+    "data_4": {
+        "time": [13, 17, 21],
+        "url": "https://image.lexica.art/md/09e02a01-9c99-45d7-bceb-c05fa5712adf",
+    },
+}
+JST = timezone(timedelta(hours=+9), "JST")
 
 
 def save_post_data(new_data: dict):
@@ -85,12 +99,12 @@ def post_image(image_url: str):
 
 @retry(tries=5, delay=5)
 def get_image():
+    currnet_hour = datetime.now(JST).hour
+    key = [k for k, v in FAVORITE_LIST.items() if currnet_hour in v["time"]][0]
     data = choice(
         [
             data
-            for data in get_with_error_handling(
-                f"https://lexica.art/api/v1/search?q={choice(FAVORITE_LIST)}"
-            )["images"]
+            for data in get_with_error_handling(FAVORITE_LIST[key]["url"])["images"]
             if 320 < int(data["width"]) < 1440
             # https://developers.facebook.com/docs/instagram-api/reference/ig-user/media/
             and 0.8 < int(data["width"]) / int(data["height"]) < 1.91
