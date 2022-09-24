@@ -38,6 +38,6 @@
 			]
 		}
 	},
-	"postCreateCommand": "make install-packages",
+	"postCreateCommand": "make install-chrome && make install-packages",
 	"remoteUser": "vscode"
 }
