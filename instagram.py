@@ -101,10 +101,11 @@ def post_image(image_url: str):
 def get_image():
     currnet_hour = datetime.now(JST).hour
     key = [k for k, v in FAVORITE_LIST.items() if currnet_hour in v["time"]][0]
+    url = f"https://lexica.art/api/v1/search?q={FAVORITE_LIST[key]['url']}"
     data = choice(
         [
             data
-            for data in get_with_error_handling(FAVORITE_LIST[key]["url"])["images"]
+            for data in get_with_error_handling(url)["images"]
             if 320 < int(data["width"]) < 1440
             # https://developers.facebook.com/docs/instagram-api/reference/ig-user/media/
             and 0.8 < int(data["width"]) / int(data["height"]) < 1.91
