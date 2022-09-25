@@ -238,5 +238,20 @@
     "promptid": "0fa01539-6ab3-41a3-a131-54c55ed6f4f5",
     "instagram_permalink": "https://www.instagram.com/p/Ci6z0aHMZfE/",
     "instagram_timestamp": "2022-09-25T06:01:39+0000"
+  },
+  {
+    "id": "83210bfe-987b-49ff-99d7-c8d7eade2bff",
+    "gallery": "https://lexica.art?q=83210bfe-987b-49ff-99d7-c8d7eade2bff",
+    "src": "https://lexica-serve-encoded-images.sharif.workers.dev/md/83210bfe-987b-49ff-99d7-c8d7eade2bff",
+    "srcSmall": "https://lexica-serve-encoded-images.sharif.workers.dev/sm/83210bfe-987b-49ff-99d7-c8d7eade2bff",
+    "prompt": "Alone at the edge of a universe humming a tune, For merely dreaming we were snow, 8k, award winning",
+    "width": 704,
+    "height": 512,
+    "seed": "4166235574",
+    "grid": false,
+    "model": "stable-diffusion",
+    "promptid": "1d3cdecf-e7f8-409c-8ac8-ae0bb4fa2af6",
+    "instagram_permalink": "https://www.instagram.com/p/Ci7BmBcsEK6/",
+    "instagram_timestamp": "2022-09-25T08:02:02+0000"
   }
 ]
