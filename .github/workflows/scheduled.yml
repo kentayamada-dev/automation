@@ -2,8 +2,8 @@ name: Scheduled-Workflow
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 1-15 * * *'
+  repository_dispatch:
+    types: [trigger-workflow]
 
 jobs:
   Post:
