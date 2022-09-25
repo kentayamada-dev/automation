@@ -358,5 +358,20 @@
     "promptid": "d9d82955-cd63-42a3-8f2c-1cf04c92d4eb",
     "instagram_permalink": "https://www.instagram.com/p/Ci8T3LPhtqT/",
     "instagram_timestamp": "2022-09-25T20:00:54+0000"
+  },
+  {
+    "id": "d776e746-f9fb-42a9-ae09-163f6a887804",
+    "gallery": "https://lexica.art?q=d776e746-f9fb-42a9-ae09-163f6a887804",
+    "src": "https://lexica-serve-encoded-images.sharif.workers.dev/md/d776e746-f9fb-42a9-ae09-163f6a887804",
+    "srcSmall": "https://lexica-serve-encoded-images.sharif.workers.dev/sm/d776e746-f9fb-42a9-ae09-163f6a887804",
+    "prompt": "colored powder explosion in the living room, film still from the movie directed by Denis Villeneuve with art direction by Salvador Dal\u00ed, wide lens",
+    "width": 1024,
+    "height": 576,
+    "seed": "418531959",
+    "grid": false,
+    "model": "stable-diffusion",
+    "promptid": "19b8ea98-9eba-45d5-bcf6-a4176d109a48",
+    "instagram_permalink": "https://www.instagram.com/p/Ci8a1MpOZlI/",
+    "instagram_timestamp": "2022-09-25T21:01:49+0000"
   }
 ]
