@@ -373,5 +373,20 @@
     "promptid": "19b8ea98-9eba-45d5-bcf6-a4176d109a48",
     "instagram_permalink": "https://www.instagram.com/p/Ci8a1MpOZlI/",
     "instagram_timestamp": "2022-09-25T21:01:49+0000"
+  },
+  {
+    "id": "f510a96c-e834-48aa-b314-dfd77fe53cbb",
+    "gallery": "https://lexica.art?q=f510a96c-e834-48aa-b314-dfd77fe53cbb",
+    "src": "https://lexica-serve-encoded-images.sharif.workers.dev/md/f510a96c-e834-48aa-b314-dfd77fe53cbb",
+    "srcSmall": "https://lexica-serve-encoded-images.sharif.workers.dev/sm/f510a96c-e834-48aa-b314-dfd77fe53cbb",
+    "prompt": "close up of an rgb futuristic shoe with rainbow wings ",
+    "width": 512,
+    "height": 512,
+    "seed": "762943598",
+    "grid": false,
+    "model": "stable-diffusion",
+    "promptid": "6fa299d5-114d-43a1-9c43-5f9620685f53",
+    "instagram_permalink": "https://www.instagram.com/p/Ci8hrIdvJSh/",
+    "instagram_timestamp": "2022-09-25T22:01:35+0000"
   }
 ]
