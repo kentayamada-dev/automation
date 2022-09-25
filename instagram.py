@@ -15,21 +15,18 @@ from requests_with_error_handling import (
 
 BASE_URL = "https://graph.facebook.com/v15.0"
 HASH_TAG_LIST = [
-    "#可愛い",
     "#instagood",
-    "#JKブランド",
-    "#tbt",
+    "#drawing",
     "#art",
-    "#picoftheday",
     "#love",
     "#fypシ",
     "#fyp",
-    "#jk",
     "#style",
     "#instapic",
     "#follow",
     "#beautiful",
     "#instamood",
+    "#いいね返し",
     "#エモい",
     "#癒し",
     "#いいね返し",
@@ -38,6 +35,9 @@ HASH_TAG_LIST = [
     "#可愛い",
     "#インスタ映え",
     "#最高",
+    "#きれい",
+    "#JKブランド",
+    "#jk",
 ]
 FAVORITE_LIST = {
     "data_1": {
