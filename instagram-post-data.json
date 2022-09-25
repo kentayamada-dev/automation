@@ -283,5 +283,20 @@
     "promptid": "a464c5f6-ae1c-4e11-9012-6eadb5da64fb",
     "instagram_permalink": "https://www.instagram.com/p/Ci7qw5SOge2/",
     "instagram_timestamp": "2022-09-25T14:01:47+0000"
+  },
+  {
+    "id": "fa8382e5-177e-41bf-b5cf-0aa0a9b1ad13",
+    "gallery": "https://lexica.art?q=fa8382e5-177e-41bf-b5cf-0aa0a9b1ad13",
+    "src": "https://lexica-serve-encoded-images.sharif.workers.dev/md/fa8382e5-177e-41bf-b5cf-0aa0a9b1ad13",
+    "srcSmall": "https://lexica-serve-encoded-images.sharif.workers.dev/sm/fa8382e5-177e-41bf-b5cf-0aa0a9b1ad13",
+    "prompt": "a flock of many puffy clouds tangled into large whirling ultra detailed ribbons of colored glass, abstract environment, playful, award winning art, epic dreamlike fantasy landscape, ultra realistic, ",
+    "width": 768,
+    "height": 512,
+    "seed": "2786022193",
+    "grid": false,
+    "model": "stable-diffusion",
+    "promptid": "bc83c4ff-b775-4539-a580-31a029ccba65",
+    "instagram_permalink": "https://www.instagram.com/p/Ci74cSjO7A8/",
+    "instagram_timestamp": "2022-09-25T16:01:19+0000"
   }
 ]
