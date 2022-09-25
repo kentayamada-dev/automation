@@ -15,7 +15,7 @@ from requests_with_error_handling import (
 
 BASE_URL = "https://graph.facebook.com/v15.0"
 HASH_TAG_LIST = [
-    "#photooftheday",
+    "#可愛い",
     "#instagood",
     "#JKブランド",
     "#tbt",
@@ -28,12 +28,12 @@ HASH_TAG_LIST = [
     "#style",
     "#instapic",
     "#follow",
-    "#selfie",
+    "#beautiful",
     "#instamood",
     "#エモい",
-    "#写真撮ってる人と繋がりたい",
-    "#写真好きな人と繋がりたい",
-    "#ファインダー越しの私の世界",
+    "#癒し",
+    "#いいね返し",
+    "#イラスト",
     "#かわいい",
     "#可愛い",
     "#インスタ映え",
