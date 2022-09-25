@@ -313,5 +313,20 @@
     "promptid": "50315a3c-f4b8-4a09-9ca7-ab28495c0597",
     "instagram_permalink": "https://www.instagram.com/p/Ci7_VNZuodW/",
     "instagram_timestamp": "2022-09-25T17:01:30+0000"
+  },
+  {
+    "id": "45a58dda-297e-4b0c-a373-24cbdd007faa",
+    "gallery": "https://lexica.art?q=45a58dda-297e-4b0c-a373-24cbdd007faa",
+    "src": "https://lexica-serve-encoded-images.sharif.workers.dev/md/45a58dda-297e-4b0c-a373-24cbdd007faa",
+    "srcSmall": "https://lexica-serve-encoded-images.sharif.workers.dev/sm/45a58dda-297e-4b0c-a373-24cbdd007faa",
+    "prompt": "the ruins of a village made out of stone in a forest of blue trees at night, a night sky filled with stars",
+    "width": 512,
+    "height": 512,
+    "seed": "1551226965",
+    "grid": false,
+    "model": "stable-diffusion",
+    "promptid": "aab2efc3-3265-432a-9463-44620a69d0e4",
+    "instagram_permalink": "https://www.instagram.com/p/Ci8GNB1O9j9/",
+    "instagram_timestamp": "2022-09-25T18:01:33+0000"
   }
 ]
