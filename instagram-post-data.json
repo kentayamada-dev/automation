@@ -268,5 +268,20 @@
     "promptid": "f62fec99-7dd3-41a7-8b49-fd83091ac71b",
     "instagram_permalink": "https://www.instagram.com/p/Ci7jzrCD9Yu/",
     "instagram_timestamp": "2022-09-25T13:01:00+0000"
+  },
+  {
+    "id": "c3ea8c97-9777-4b83-a272-1e0b47154c8e",
+    "gallery": "https://lexica.art?q=c3ea8c97-9777-4b83-a272-1e0b47154c8e",
+    "src": "https://lexica-serve-encoded-images.sharif.workers.dev/md/c3ea8c97-9777-4b83-a272-1e0b47154c8e",
+    "srcSmall": "https://lexica-serve-encoded-images.sharif.workers.dev/sm/c3ea8c97-9777-4b83-a272-1e0b47154c8e",
+    "prompt": "cutie fluffy creature icecream, digital art, 3 d, octave render, masterpiece, mega detailed, pixar, disney, vivid illustration, cartoon, fantasy, by george stubbs, artgerm, in the style of ghibli kazuo oga, pastel fur ",
+    "width": 512,
+    "height": 512,
+    "seed": "2974166828",
+    "grid": false,
+    "model": "stable-diffusion",
+    "promptid": "a464c5f6-ae1c-4e11-9012-6eadb5da64fb",
+    "instagram_permalink": "https://www.instagram.com/p/Ci7qw5SOge2/",
+    "instagram_timestamp": "2022-09-25T14:01:47+0000"
   }
 ]
