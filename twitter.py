@@ -1,7 +1,7 @@
 # https://www.youtube.com/watch?v=fD-GRCH_tks
 
 from os import environ
-from random import choice
+from random import choice, sample
 from tweepy import Client
 from dotenv import load_dotenv
 from selenium.webdriver.common.by import By
@@ -17,15 +17,12 @@ def check_hashtag(string: str):
 def tweet(client: Client):
     chrome_driver = get_chrome_driver()
     chrome_driver.get("https://twittrend.jp/")
-    trend = check_hashtag(
-        choice(
-            [
-                chrome_driver.find_element(By.XPATH, f"//li[{i}]/p/a").text
-                for i in range(1, 5)
-            ]
-        )
-    )
-    trends_hashtags = f"{trend} #最新ニューズピックス"
+    trend_list = [
+        chrome_driver.find_element(By.XPATH, f"//li[{i}]/p/a").text
+        for i in range(1, 5)
+    ]
+    trends = [check_hashtag(trend) for trend in sample(trend_list, choice(range(1, 3)))]
+    trends_hashtags = " ".join(trends) + " #最新ニューズピックス"
     chrome_driver.get("https://news.yahoo.co.jp/flash")
     topic = chrome_driver.find_element(
         By.XPATH, "//*[@id='contentsWrap']/div[1]/div[2]/div/a"
