@@ -298,5 +298,20 @@
     "promptid": "bc83c4ff-b775-4539-a580-31a029ccba65",
     "instagram_permalink": "https://www.instagram.com/p/Ci74cSjO7A8/",
     "instagram_timestamp": "2022-09-25T16:01:19+0000"
+  },
+  {
+    "id": "4824da53-7bb9-4d9c-8645-1493a7ae2de2",
+    "gallery": "https://lexica.art?q=4824da53-7bb9-4d9c-8645-1493a7ae2de2",
+    "src": "https://lexica-serve-encoded-images.sharif.workers.dev/md/4824da53-7bb9-4d9c-8645-1493a7ae2de2",
+    "srcSmall": "https://lexica-serve-encoded-images.sharif.workers.dev/sm/4824da53-7bb9-4d9c-8645-1493a7ae2de2",
+    "prompt": "illustration of a colorful melting human head. flowers and blossoms, ferrofluids, burning water distortions. intricate abstract. intricate artwork. by tooth wu, wlop, beeple, dan mumford. octane render, trending on artstation, greg rutkowski very coherent symmetrical artwork. cinematic, hyper realism, high detail, octane render, 8 k, depth of field, bokeh. iridescent accents ",
+    "width": 704,
+    "height": 704,
+    "seed": "1645143991",
+    "grid": false,
+    "model": "stable-diffusion",
+    "promptid": "50315a3c-f4b8-4a09-9ca7-ab28495c0597",
+    "instagram_permalink": "https://www.instagram.com/p/Ci7_VNZuodW/",
+    "instagram_timestamp": "2022-09-25T17:01:30+0000"
   }
 ]
