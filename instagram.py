@@ -41,20 +41,24 @@ HASH_TAG_LIST = [
 ]
 FAVORITE_LIST = {
     "data_1": {
-        "time": [10, 14, 18, 22],
+        "time": [0, 5, 10, 15, 20],
         "url": "https://image.lexica.art/md/aeaca738-b54e-4e3e-88d9-1b480d3e54fe",
     },
     "data_2": {
-        "time": [11, 15, 19, 23],
-        "url": "https://image.lexica.art/md/533d1efe-5326-4071-b23c-f7444f4700f9",
+        "time": [1, 6, 11, 16, 21],
+        "url": "https://image.lexica.art/md/45c5d8fc-714f-42db-83db-9fcc1d287f94",
     },
     "data_3": {
-        "time": [12, 16, 20],
+        "time": [2, 7, 12, 17, 22],
         "url": "https://image.lexica.art/md/3028dc93-6ee9-4268-b8c6-e0280e4b4fb9",
     },
     "data_4": {
-        "time": [13, 17, 21],
+        "time": [3, 8, 13, 18, 23],
         "url": "https://image.lexica.art/md/09e02a01-9c99-45d7-bceb-c05fa5712adf",
+    },
+    "data_5": {
+        "time": [4, 9, 14, 19],
+        "url": "https://image.lexica.art/md/533d1efe-5326-4071-b23c-f7444f4700f9",
     },
 }
 JST = timezone(timedelta(hours=+9), "JST")
