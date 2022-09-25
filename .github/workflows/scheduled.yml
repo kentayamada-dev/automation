@@ -57,16 +57,3 @@ jobs:
         with:
           add: instagram-post-data.json
           pull: origin main
-
-  Line-Notify:
-    if: failure() && needs.Post.outputs.instagram_output != 'success' || needs.Post.outputs.twitter_output != 'success'
-    needs: Post
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    steps:
-      - name: Send line notification
-        uses: snow-actions/line-notify@v1.0.0
-        with:
-          access_token: ${{ secrets.LINE_NOTIFY_TOKEN }}
-          message: "⚠️失敗しました\n\nInstagram: ${{ needs.Post.outputs.instagram_output }}\nTwitter: ${{ needs.Post.outputs.twitter_output }}\n\n${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
