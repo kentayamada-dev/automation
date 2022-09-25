@@ -328,5 +328,20 @@
     "promptid": "aab2efc3-3265-432a-9463-44620a69d0e4",
     "instagram_permalink": "https://www.instagram.com/p/Ci8GNB1O9j9/",
     "instagram_timestamp": "2022-09-25T18:01:33+0000"
+  },
+  {
+    "id": "e60c504e-fef3-4504-9b26-6c265ad999c2",
+    "gallery": "https://lexica.art?q=e60c504e-fef3-4504-9b26-6c265ad999c2",
+    "src": "https://lexica-serve-encoded-images.sharif.workers.dev/md/e60c504e-fef3-4504-9b26-6c265ad999c2",
+    "srcSmall": "https://lexica-serve-encoded-images.sharif.workers.dev/sm/e60c504e-fef3-4504-9b26-6c265ad999c2",
+    "prompt": "The fluffiest little fuzzbutts in the world, huggy wuggy from poppy playtime video game, fullbody, ultra high detailed, glowing lights, oil painting, Greg Rutkowski, Charlie Bowater, Beeple, unreal 5, DAZ, hyperrealistic, octane render, RPG portrait, dynamic lighting, fantasy art, beautiful face",
+    "width": 512,
+    "height": 512,
+    "seed": "2640185908",
+    "grid": false,
+    "model": "stable-diffusion",
+    "promptid": "01cc0bda-a2d0-474c-8e58-ec0297bcce20",
+    "instagram_permalink": "https://www.instagram.com/p/Ci8ND6fOkPs/",
+    "instagram_timestamp": "2022-09-25T19:01:29+0000"
   }
 ]
