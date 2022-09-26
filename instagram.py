@@ -4,7 +4,6 @@
 
 from random import choice, sample
 from datetime import datetime, timedelta, timezone
-from json import dump, load
 from os import environ
 from dotenv import load_dotenv
 from retry import retry
@@ -29,15 +28,13 @@ HASH_TAG_LIST = [
     "#いいね返し",
     "#エモい",
     "#癒し",
-    "#いいね返し",
+    "#フォロー返し",
     "#イラスト",
     "#かわいい",
     "#可愛い",
     "#インスタ映え",
     "#最高",
     "#きれい",
-    "#JKブランド",
-    "#jk",
 ]
 FAVORITE_LIST = {
     "data_1": {
@@ -58,20 +55,10 @@ FAVORITE_LIST = {
     },
     "data_5": {
         "time": [4, 9, 14, 19],
-        "url": "https://image.lexica.art/md/533d1efe-5326-4071-b23c-f7444f4700f9",
+        "url": "https://image.lexica.art/md/f849963c-bf93-40df-aaa7-24f85092cf8a",
     },
 }
 JST = timezone(timedelta(hours=+9), "JST")
-
-
-def save_post_data(new_data: dict):
-    with open("instagram-post-data.json", "r", encoding="utf-8") as file:
-        saved_data = load(file)
-        file.close()
-    saved_data.append(new_data)
-    with open("instagram-post-data.json", "w", encoding="utf-8") as file:
-        dump(saved_data, file, indent=2)
-        file.close()
 
 
 def post_image(image_url: str):
@@ -91,14 +78,7 @@ def post_image(image_url: str):
         "creation_id": container_id,
         "access_token": environ["INSTAGRAM_ACCESS_TOKEN"],
     }
-    post_id = post_with_error_handling(url=publish_url, params=publish_params)["id"]
-    post_url = f"{BASE_URL}/{post_id}"
-    post_params = {
-        "access_token": environ["INSTAGRAM_ACCESS_TOKEN"],
-        "fields": "permalink, timestamp",
-    }
-    post_data = get_with_error_handling(post_url, params=post_params)
-    return post_data
+    post_with_error_handling(url=publish_url, params=publish_params)
 
 
 @retry(tries=5, delay=5)
@@ -122,7 +102,4 @@ def get_image():
 if __name__ == "__main__":
     load_dotenv()
     image_data = get_image()
-    post_image_response = post_image(image_data["src"])
-    image_data["instagram_permalink"] = post_image_response["permalink"]
-    image_data["instagram_timestamp"] = post_image_response["timestamp"]
-    save_post_data(image_data)
+    post_image(image_data["src"])
