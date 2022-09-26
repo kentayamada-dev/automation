@@ -418,5 +418,20 @@
     "promptid": "d6b041e8-b972-4148-a95c-49653194c896",
     "instagram_permalink": "https://www.instagram.com/p/Ci8va2-tEmA/",
     "instagram_timestamp": "2022-09-26T00:01:42+0000"
+  },
+  {
+    "id": "d4f64040-b918-4883-bc12-4dde55f44bbd",
+    "gallery": "https://lexica.art?q=d4f64040-b918-4883-bc12-4dde55f44bbd",
+    "src": "https://lexica-serve-encoded-images.sharif.workers.dev/md/d4f64040-b918-4883-bc12-4dde55f44bbd",
+    "srcSmall": "https://lexica-serve-encoded-images.sharif.workers.dev/sm/d4f64040-b918-4883-bc12-4dde55f44bbd",
+    "prompt": "velvet tsunami album cover, no text, no watermark, film, gradient ",
+    "width": 768,
+    "height": 768,
+    "seed": "3754334374",
+    "grid": false,
+    "model": "stable-diffusion",
+    "promptid": "02ebac12-844b-4cf8-926d-64b134157180",
+    "instagram_permalink": "https://www.instagram.com/p/Ci82R5jsynK/",
+    "instagram_timestamp": "2022-09-26T01:01:38+0000"
   }
 ]
