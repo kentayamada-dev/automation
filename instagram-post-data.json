@@ -403,5 +403,20 @@
     "promptid": "2a1fb872-8424-4ad5-a698-ea3da251c5cf",
     "instagram_permalink": "https://www.instagram.com/p/Ci8oj33ugDC/",
     "instagram_timestamp": "2022-09-25T23:01:46+0000"
+  },
+  {
+    "id": "5f76de5a-e648-46c0-a1c6-649148b8d776",
+    "gallery": "https://lexica.art?q=5f76de5a-e648-46c0-a1c6-649148b8d776",
+    "src": "https://lexica-serve-encoded-images.sharif.workers.dev/md/5f76de5a-e648-46c0-a1c6-649148b8d776",
+    "srcSmall": "https://lexica-serve-encoded-images.sharif.workers.dev/sm/5f76de5a-e648-46c0-a1c6-649148b8d776",
+    "prompt": "epic professional digital art of an improbable impossible fuzzy adorable, cute and cuddly neotenic mammalian alien, key lighting from left and right, full body length shot, best on artstation, breathtaking, epic, stunning, gorgeous, much detail, much wow, cgsociety, wlop, pixiv, behance, deviantart, masterpiece, UHD, 8K",
+    "width": 640,
+    "height": 640,
+    "seed": "2149740770",
+    "grid": false,
+    "model": "stable-diffusion",
+    "promptid": "d6b041e8-b972-4148-a95c-49653194c896",
+    "instagram_permalink": "https://www.instagram.com/p/Ci8va2-tEmA/",
+    "instagram_timestamp": "2022-09-26T00:01:42+0000"
   }
 ]
