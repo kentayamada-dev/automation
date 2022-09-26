@@ -21,7 +21,7 @@ def tweet(client: Client):
         chrome_driver.find_element(By.XPATH, f"//li[{i}]/p/a").text
         for i in range(1, 5)
     ]
-    trends = [check_hashtag(trend) for trend in sample(trend_list, choice(range(1, 3)))]
+    trends = [check_hashtag(trend) for trend in sample(trend_list, choice(range(1, 2)))]
     trends_hashtags = " ".join(trends) + " #最新ニューズピックス"
     chrome_driver.get("https://news.yahoo.co.jp/flash")
     topic = chrome_driver.find_element(
