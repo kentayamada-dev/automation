@@ -63,7 +63,7 @@ JST = timezone(timedelta(hours=+9), "JST")
 
 def post_image(image_url: str):
     hash_tags = (
-        " ".join(sample(HASH_TAG_LIST, choice(range(10, 14)))) + " #legit_art_feed"
+        " ".join(sample(HASH_TAG_LIST, choice(range(8, 11)))) + " #legit_art_feeds #ガチアート"
     )
     media_url = f"{BASE_URL}/{environ['INSTAGRAM_BUSINESS_ACCOUNT_ID']}"
     upload_url = f"{media_url}/media"
