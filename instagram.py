@@ -43,7 +43,7 @@ FAVORITE_LIST = {
     },
     "data_2": {
         "time": [1, 6, 11, 16, 21],
-        "url": "https://image.lexica.art/md/45c5d8fc-714f-42db-83db-9fcc1d287f94",
+        "url": "https://image.lexica.art/md/68bef89e-e18b-4f3e-9594-dfea29533042",
     },
     "data_3": {
         "time": [2, 7, 12, 17, 22],
