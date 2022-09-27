@@ -5,7 +5,7 @@ from random import choice, sample
 from tweepy import Client
 from dotenv import load_dotenv
 from selenium.webdriver.common.by import By
-from retry import retry
+from tenacity import retry, wait_fixed, stop_after_attempt
 from chrome_driver import get_chrome_driver
 
 
@@ -13,7 +13,7 @@ def check_hashtag(string: str):
     return string if "#" in string else f"#{string}"
 
 
-@retry(tries=5, delay=5)
+@retry(stop=stop_after_attempt(5), wait=wait_fixed(10))
 def tweet(client: Client):
     chrome_driver = get_chrome_driver()
     chrome_driver.get("https://twittrend.jp/")

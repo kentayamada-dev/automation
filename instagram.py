@@ -6,7 +6,7 @@ from random import choice, sample
 from datetime import datetime, timedelta, timezone
 from os import environ
 from dotenv import load_dotenv
-from retry import retry
+from tenacity import retry, wait_fixed, stop_after_attempt
 from requests_with_error_handling import (
     get_with_error_handling,
     post_with_error_handling,
@@ -81,7 +81,7 @@ def post_image(image_url: str):
     post_with_error_handling(url=publish_url, params=publish_params)
 
 
-@retry(tries=5, delay=5)
+@retry(stop=stop_after_attempt(5), wait=wait_fixed(10))
 def get_image():
     currnet_hour = datetime.now(JST).hour
     key = [k for k, v in FAVORITE_LIST.items() if currnet_hour in v["time"]][0]
