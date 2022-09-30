@@ -6,7 +6,6 @@ from random import choice, sample
 from datetime import datetime, timedelta, timezone
 from os import environ
 from dotenv import load_dotenv
-from my_logger import my_logger
 from requests_with_error_handling import (
     get_with_error_handling,
     post_with_error_handling,
@@ -62,7 +61,6 @@ FAVORITE_LIST = {
 
 
 def post_image(image_url: str):
-    logger = my_logger.get_logger()
     hash_tags = (
         " ".join(sample(HASH_TAG_LIST, choice(range(8, 11))))
         + " #legit_art_feeds #ガチアート"
@@ -75,24 +73,21 @@ def post_image(image_url: str):
         "caption": hash_tags,
         "access_token": environ["INSTAGRAM_ACCESS_TOKEN"],
     }
-    container_id = post_with_error_handling(
-        logger=logger, url=upload_url, params=upload_params
-    )["id"]
+    container_id = post_with_error_handling(url=upload_url, params=upload_params)["id"]
     publish_params = {
         "creation_id": container_id,
         "access_token": environ["INSTAGRAM_ACCESS_TOKEN"],
     }
-    post_with_error_handling(logger=logger, url=publish_url, params=publish_params)
+    post_with_error_handling(url=publish_url, params=publish_params)
 
 
 def get_image():
-    logger = my_logger.get_logger()
     key = [k for k, v in FAVORITE_LIST.items() if CURRNET_HOUR_JST in v["time"]][0]
     url = f"https://lexica.art/api/v1/search?q={FAVORITE_LIST[key]['url']}"
     data = choice(
         [
             data
-            for data in get_with_error_handling(logger=logger, url=url)["images"]
+            for data in get_with_error_handling(url=url)["images"]
             if 320 < int(data["width"]) < 1440
             # https://developers.facebook.com/docs/instagram-api/reference/ig-user/media/
             and 0.8 < int(data["width"]) / int(data["height"]) < 1.91

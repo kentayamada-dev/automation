@@ -49,4 +49,4 @@ class MyLogger:
         return logger
 
 
-my_logger = MyLogger()
+my_logger = MyLogger().get_logger()
