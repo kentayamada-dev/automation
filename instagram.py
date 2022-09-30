@@ -47,11 +47,11 @@ FAVORITE_LIST = {
     },
     "data_3": {
         "time": [2, 7, 12, 17, 22],
-        "url": "https://image.lexica.art/md/06afe8ce-ad64-4594-bb2f-a5a25371622c",
+        "url": "https://image.lexica.art/md/71a9af49-dcf4-4098-8c5f-d6688b272240",
     },
     "data_4": {
         "time": [3, 8, 13, 18, 23],
-        "url": "https://image.lexica.art/md/d5b9209d-9672-44eb-a4a5-d0d7109feedb",
+        "url": "https://image.lexica.art/md/511a6afa-122b-478d-b0db-835a5bd7fed2",
     },
     "data_5": {
         "time": [4, 9, 14, 19],
