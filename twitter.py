@@ -24,7 +24,10 @@ def tweet(client: Client):
         .find("p.trend > a")[:5]
     )
     counts = choice(range(1, 2)) if CURRNET_HOUR_JST % 2 == 0 else choice(range(4, 6))
-    trends = [check_hashtag(trend) for trend in sample(trend_list, counts)]
+    trends = [
+        check_hashtag(trend)
+        for trend in sample([trend.text for trend in trend_list], counts)
+    ]
     trends_hashtags = " ".join(trends) + " #最新ニューズピックス"
     topic = [
         i
