@@ -6,13 +6,14 @@ from random import choice, sample
 from datetime import datetime, timedelta, timezone
 from os import environ
 from dotenv import load_dotenv
-from tenacity import retry, wait_fixed, stop_after_attempt
+from my_logger import my_logger
 from requests_with_error_handling import (
     get_with_error_handling,
     post_with_error_handling,
 )
 
 BASE_URL = "https://graph.facebook.com/v15.0"
+CURRNET_HOUR_JST = datetime.now(timezone(timedelta(hours=+9), "JST")).hour
 HASH_TAG_LIST = [
     "#instagood",
     "#drawing",
@@ -58,10 +59,10 @@ FAVORITE_LIST = {
         "url": "https://image.lexica.art/md/617f19c1-c631-4766-a6d1-5757e104c6c8",
     },
 }
-JST = timezone(timedelta(hours=+9), "JST")
 
 
 def post_image(image_url: str):
+    logger = my_logger.get_logger()
     hash_tags = (
         " ".join(sample(HASH_TAG_LIST, choice(range(8, 11))))
         + " #legit_art_feeds #ガチアート"
@@ -74,23 +75,24 @@ def post_image(image_url: str):
         "caption": hash_tags,
         "access_token": environ["INSTAGRAM_ACCESS_TOKEN"],
     }
-    container_id = post_with_error_handling(url=upload_url, params=upload_params)["id"]
+    container_id = post_with_error_handling(
+        logger=logger, url=upload_url, params=upload_params
+    )["id"]
     publish_params = {
         "creation_id": container_id,
         "access_token": environ["INSTAGRAM_ACCESS_TOKEN"],
     }
-    post_with_error_handling(url=publish_url, params=publish_params)
+    post_with_error_handling(logger=logger, url=publish_url, params=publish_params)
 
 
-@retry(stop=stop_after_attempt(5), wait=wait_fixed(10))
 def get_image():
-    currnet_hour = datetime.now(JST).hour
-    key = [k for k, v in FAVORITE_LIST.items() if currnet_hour in v["time"]][0]
+    logger = my_logger.get_logger()
+    key = [k for k, v in FAVORITE_LIST.items() if CURRNET_HOUR_JST in v["time"]][0]
     url = f"https://lexica.art/api/v1/search?q={FAVORITE_LIST[key]['url']}"
     data = choice(
         [
             data
-            for data in get_with_error_handling(url)["images"]
+            for data in get_with_error_handling(logger=logger, url=url)["images"]
             if 320 < int(data["width"]) < 1440
             # https://developers.facebook.com/docs/instagram-api/reference/ig-user/media/
             and 0.8 < int(data["width"]) / int(data["height"]) < 1.91

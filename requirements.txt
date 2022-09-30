@@ -1,0 +1,6 @@
+python-dotenv
+tenacity
+pytz
+requests-html
+tweepy
+requests
