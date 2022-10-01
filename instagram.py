@@ -43,7 +43,7 @@ FAVORITE_LIST = {
     },
     "data_2": {
         "time": [1, 6, 11, 16, 21],
-        "url": "https://image.lexica.art/md/39753ff8-420b-469d-be4c-10c54c4b91bd",
+        "url": "https://image.lexica.art/md/ecf8b2e0-26ec-4cea-8f98-83dc31786b27",
     },
     "data_3": {
         "time": [2, 7, 12, 17, 22],
@@ -55,7 +55,7 @@ FAVORITE_LIST = {
     },
     "data_5": {
         "time": [4, 9, 14, 19],
-        "url": "https://image.lexica.art/md/617f19c1-c631-4766-a6d1-5757e104c6c8",
+        "url": "https://image.lexica.art/md/1bb98e8a-82d8-45c0-9403-96d2d28087ec",
     },
 }
 

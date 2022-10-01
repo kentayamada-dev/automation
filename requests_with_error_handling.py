@@ -1,7 +1,10 @@
 from json import dumps
 from requests import post, get
 from tenacity import retry, wait_fixed, stop_after_attempt
-from my_logger import my_logger
+from my_logger import MyLogger
+
+
+my_logger = MyLogger().get_logger()
 
 
 @retry(stop=stop_after_attempt(5), wait=wait_fixed(10))
@@ -15,6 +18,7 @@ def post_with_error_handling(url: str, params=None):
             else post(url=url, timeout=(3.0, 9.0))
         )
         data = response.json()
+
         if response.status_code != 200:
             raise Exception(None)
 
@@ -33,8 +37,7 @@ def get_with_error_handling(url: str):
     log = f"URL  : {url}"
 
     try:
-        response = get(url=url, timeout=(3.0, 9.0))
-        data = response.json()
+        data = get(url=url, timeout=(3.0, 9.0)).json()
 
         my_logger.error(log + f"\nData :\n{dumps(data, indent=2)}")
     except Exception as exc:

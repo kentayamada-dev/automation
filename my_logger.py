@@ -25,7 +25,8 @@ class MyLogger:
             CRITICAL: f"{RED}{info}{END}{message}",
         }
 
-        def __convert_time(self, _):
+        @staticmethod
+        def __convert_time(_):
             return datetime.now(timezone("Asia/Tokyo")).timetuple()
 
         def format(self, record):
@@ -37,16 +38,14 @@ class MyLogger:
 
             return formatter.format(record)
 
-    def get_logger(self):
+    @classmethod
+    def get_logger(cls):
         logger = getLogger()
         logger.setLevel(ERROR)
         stream_handler = StreamHandler()
         stream_handler.setLevel(ERROR)
-        stream_handler.setFormatter(self.MyFormatter())
+        stream_handler.setFormatter(cls.MyFormatter())
         if not logger.hasHandlers():
             logger.addHandler(stream_handler)
 
         return logger
-
-
-my_logger = MyLogger().get_logger()
