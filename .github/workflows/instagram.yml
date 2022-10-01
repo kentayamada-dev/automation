@@ -1,0 +1,28 @@
+name: Instagram
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [trigger-instagram]
+
+jobs:
+  Post:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install packages
+        run: make install-packages
+
+      - name: Install dependencies
+        run: make install-dependencies
+
+      - name: Instagram
+        id: instagram_status
+        run: make instagram
+        env:
+          INSTAGRAM_BUSINESS_ACCOUNT_ID: ${{ secrets.INSTAGRAM_BUSINESS_ACCOUNT_ID }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
