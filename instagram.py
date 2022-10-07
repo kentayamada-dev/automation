@@ -39,11 +39,11 @@ HASH_TAG_LIST = [
 FAVORITE_LIST = {
     "data_1": {
         "time": [0, 5, 10, 15, 20],
-        "url": "https://image.lexica.art/md/c8db8b2f-8ce9-4a8b-8d70-c4a219864d0a",
+        "url": "https://image.lexica.art/md/8f9613c2-d1fb-49ee-b6d1-e92f6ffa3227",
     },
     "data_2": {
         "time": [1, 6, 11, 16, 21],
-        "url": "https://image.lexica.art/md/ecf8b2e0-26ec-4cea-8f98-83dc31786b27",
+        "url": "https://image.lexica.art/md/1f02ffb1-6dd7-470c-9473-dd54f24f549d",
     },
     "data_3": {
         "time": [2, 7, 12, 17, 22],
@@ -55,7 +55,7 @@ FAVORITE_LIST = {
     },
     "data_5": {
         "time": [4, 9, 14, 19],
-        "url": "https://image.lexica.art/md/1bb98e8a-82d8-45c0-9403-96d2d28087ec",
+        "url": "https://image.lexica.art/md/56a2c304-218d-4583-a7ce-a525625012e5",
     },
 }
 
