@@ -55,7 +55,7 @@ FAVORITE_LIST = {
     },
     "data_5": {
         "time": [4, 9, 14, 19],
-        "url": "https://image.lexica.art/md/56a2c304-218d-4583-a7ce-a525625012e5",
+        "url": "https://image.lexica.art/md/60c6561a-eeef-4e4d-920c-a0b2bcde02e6",
     },
 }
 
