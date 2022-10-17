@@ -36,7 +36,7 @@ def tweet(client: Client):
     topic_text = topic.attrs["aria-label"] if IS_EVEN_MIN else topic.text
     topic_url = topic.attrs["href"]
 
-    client.create_tweet(text=f"{topic_text}\n{topic_url}\n\n#最新ニューズピックス")
+    client.create_tweet(text=f"{topic_text} {topic_url}\n\n#最新ニューズピックス")
 
 
 if __name__ == "__main__":
