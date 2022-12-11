@@ -39,23 +39,23 @@ HASH_TAG_LIST = [
 FAVORITE_LIST = {
     "data_1": {
         "time": [0, 5, 10, 15, 20],
-        "url": "https://image.lexica.art/md/0dedc144-b6bd-4df4-a3fa-6529e92e0380",
+        "url": "https://image.lexica.art/md/8f20b560-dc75-43b3-bbbf-636592a06b0b",
     },
     "data_2": {
         "time": [1, 6, 11, 16, 21],
-        "url": "https://image.lexica.art/md/1a16b26f-6d46-442b-a437-9e9520684711",
+        "url": "https://image.lexica.art/md/00abb491-93dd-423e-952a-f47660e74835",
     },
     "data_3": {
         "time": [2, 7, 12, 17, 22],
-        "url": "https://image.lexica.art/md/bcaa7bed-772d-43c9-80d8-6bf17f2ee194",
+        "url": "https://image.lexica.art/md/62929e7a-8433-4f37-b3e6-2e311aa0f3e8",
     },
     "data_4": {
         "time": [3, 8, 13, 18, 23],
-        "url": "https://image.lexica.art/md/0e14004b-dd7a-4c37-be32-7a4788dd6824",
+        "url": "https://image.lexica.art/md/2ab6bd98-cb1a-4d8e-b7bf-a9453398985e",
     },
     "data_5": {
         "time": [4, 9, 14, 19],
-        "url": "https://image.lexica.art/md/930dcc82-4ef9-45fc-8e47-2722d07cf5c0",
+        "url": "https://image.lexica.art/md/032c6023-0d6b-4fc3-9ec8-a0102f0a11b2",
     },
 }
 
