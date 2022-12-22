@@ -39,23 +39,23 @@ HASH_TAG_LIST = [
 FAVORITE_LIST = {
     "data_1": {
         "time": [0, 5, 10, 15, 20],
-        "url": "https://image.lexica.art/md/8f20b560-dc75-43b3-bbbf-636592a06b0b",
+        "url": "https://lexica-serve-encoded-images2.sharif.workers.dev/md/d6ddce42-bfe7-4b18-b37c-e2fe2b9f786f",
     },
     "data_2": {
         "time": [1, 6, 11, 16, 21],
-        "url": "https://image.lexica.art/md/00abb491-93dd-423e-952a-f47660e74835",
+        "url": "https://lexica-serve-encoded-images2.sharif.workers.dev/md/df27f080-28a4-4ed0-bbcb-283e21f74e0a",
     },
     "data_3": {
         "time": [2, 7, 12, 17, 22],
-        "url": "https://image.lexica.art/md/62929e7a-8433-4f37-b3e6-2e311aa0f3e8",
+        "url": "https://lexica-serve-encoded-images2.sharif.workers.dev/md/80a4b75e-64b1-4c15-a0a4-28029cf8a0b7",
     },
     "data_4": {
         "time": [3, 8, 13, 18, 23],
-        "url": "https://image.lexica.art/md/2ab6bd98-cb1a-4d8e-b7bf-a9453398985e",
+        "url": "https://lexica-serve-encoded-images2.sharif.workers.dev/md/0dd9bb0a-2722-49c0-9273-3c06b7942708",
     },
     "data_5": {
         "time": [4, 9, 14, 19],
-        "url": "https://image.lexica.art/md/032c6023-0d6b-4fc3-9ec8-a0102f0a11b2",
+        "url": "https://lexica-serve-encoded-images2.sharif.workers.dev/full_jpg/bdf9caf6-cfbf-4885-999c-f5091fe198e0",
     },
 }
 
