@@ -10,6 +10,10 @@ instagram:
 twitter:
 	python3 twitter.py
 
+.PHONY: economic
+economic:
+	python3 economic.py
+
 # https://docs.cypress.io/guides/getting-started/installing-cypress#Ubuntu-Debian
 .PHONY: install-dependencies
 install-dependencies:

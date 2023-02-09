@@ -1,0 +1,32 @@
+name: Economic
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [trigger-economic]
+
+jobs:
+  Post:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install packages
+        run: make install-packages
+
+      - name: Install dependencies
+        run: make install-dependencies
+
+      - name: Translate secrets of base64 into json
+        env:
+          JSON_DECODE: ${{ secrets.JSON_CREDENTIALS }}
+
+        run: |
+          echo $JSON_DECODE | base64 --decode > ./credentials.json
+
+      - name: Economic
+        id: economic_status
+        run: make economic

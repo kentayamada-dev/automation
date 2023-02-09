@@ -4,3 +4,10 @@ pytz
 requests-html
 tweepy
 requests
+google-api-python-client
+google-auth
+google-auth-httplib2
+google-auth-oauthlib
+beautifulsoup4
+requests
+html5lib
