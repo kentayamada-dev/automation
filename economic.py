@@ -6,7 +6,7 @@ from googleapiclient.discovery import build
 from google.auth import load_credentials_from_file
 
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
-CALENDAR_ID = "5bcee2db8b6795c4bfb39a7b44bf14097532baf03054ef1611ef16950f9fd71d@group.calendar.google.com"
+CALENDAR_ID = "94e385f65940aa9dfb1b2cd2d929e7f67741440aa0d43c98f837620793cd4631@group.calendar.google.com"
 gapi_creds = load_credentials_from_file("credentials.json", SCOPES)[0]
 service = build("calendar", "v3", credentials=gapi_creds)
 
