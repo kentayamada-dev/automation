@@ -7,7 +7,7 @@ on:
 
 jobs:
   Post:
-    timeout-minutes: 5
+    timeout-minutes: 60
     runs-on: ubuntu-latest
 
     steps:

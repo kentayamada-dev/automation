@@ -26,9 +26,11 @@
 					"reportPrivateUsage": "error"
 				},
 				"python.formatting.provider": "black",
+				"python.analysis.typeCheckingMode": "basic",
 				"[python]": {
 					"editor.formatOnPaste": false,
-					"editor.formatOnSaveMode": "file"
+					"editor.formatOnSaveMode": "file",
+					"editor.tabSize": 4
 				}
 			},
 			"extensions": [
