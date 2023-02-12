@@ -30,3 +30,10 @@ jobs:
       - name: Economic
         id: economic_status
         run: make economic
+
+      - name: LINE Notify
+        uses: snow-actions/line-notify@v1.1.0
+        if: ${{ failure() }}
+        with:
+          access_token: ${{ secrets.LINE_ACCESS_TOKEN }}
+          message: Economic Automation Failed
