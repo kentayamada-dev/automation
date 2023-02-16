@@ -8,6 +8,7 @@ from google_calender import GoogleCalender
 if __name__ == "__main__":
     SCOPES = ["https://www.googleapis.com/auth/calendar"]
     CALENDAR_ID = "94e385f65940aa9dfb1b2cd2d929e7f67741440aa0d43c98f837620793cd4631@group.calendar.google.com"
+    TARGETS = ["NZ", "豪", "日本", "ユーロ", "英国", "アメリカ", "カナダ"]
     gapi_creds = load_credentials_from_file("credentials.json", SCOPES)[0]
     service = build("calendar", "v3", credentials=gapi_creds)
 
@@ -52,7 +53,9 @@ if __name__ == "__main__":
         countries = []
         for event_name in event["events"]:
             idx = event_name.find("・")
-            countries.append(event_name[:idx])
+            country = event_name[:idx]
+            if country in TARGETS:
+                countries.append(country)
         countries = list(set(countries))
 
         gcal.add_events(
