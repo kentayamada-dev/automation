@@ -13,7 +13,7 @@ if __name__ == "__main__":
     service = build("calendar", "v3", credentials=gapi_creds)
 
     gcal = GoogleCalender()
-    # gcal.delete_events("2023-02-13 00:00","2023-02-19 00:00")
+    # gcal.delete_events("2023-02-19 00:00","2023-02-25 00:00")
 
     events = []
 
@@ -44,22 +44,25 @@ if __name__ == "__main__":
                 ).replace("/", "-")
                 date_time = formattedDate + " " + time
                 date_obj = next((x for x in events if x["date"] == date_time), None)
-                if date_obj is None:
-                    events.append({"date": date_time, "events": [name]})
-                else:
-                    date_obj["events"].append(name)
+                idx = name.find("・")
+                country = name[:idx]
+                if country in TARGETS:
+                    if date_obj is None:
+                        events.append(
+                            {
+                                "date": date_time,
+                                "events": [name],
+                                "countries": [country],
+                            }
+                        )
+                    else:
+                        date_obj["events"].append(name)
+                        if country not in date_obj["countries"]:
+                            date_obj["countries"].append(country)
 
     for event in events:
-        countries = []
-        for event_name in event["events"]:
-            idx = event_name.find("・")
-            country = event_name[:idx]
-            if country in TARGETS:
-                countries.append(country)
-        countries = list(set(countries))
-
         gcal.add_events(
-            "・".join(countries),
+            "・".join(event["countries"]),
             event["date"],
             event["date"],
             "\n\n".join(event["events"]),
