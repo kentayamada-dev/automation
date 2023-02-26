@@ -5,7 +5,7 @@ from googleapiclient.discovery import build
 from google.auth import load_credentials_from_file
 from google_calender import GoogleCalender
 
-if __name__ == "__main__"
+if __name__ == "__main__":
     SCOPES = ["https://www.googleapis.com/auth/calendar"]
     CALENDAR_ID = "94e385f65940aa9dfb1b2cd2d929e7f67741440aa0d43c98f837620793cd4631@group.calendar.google.com"
     TARGETS = ["豪", "日本", "ユーロ", "英国", "アメリカ", "カナダ"]
