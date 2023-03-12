@@ -13,7 +13,7 @@ if __name__ == "__main__":
     service = build("calendar", "v3", credentials=gapi_creds)
 
     gcal = GoogleCalender()
-    gcal.delete_events("2023-03-12 00:00","2023-03-18 00:00")
+#     gcal.delete_events("2023-03-12 00:00","2023-03-18 00:00")
 
     events = []
 
