@@ -14,6 +14,13 @@ twitter:
 economic:
 	python3 economic.py
 
+.PHONY: install-chrome
+install-chrome:
+	wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
+	&& echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/chrome.list \
+	&& sudo apt-get update && export DEBIAN_FRONTEND=noninteractive \
+	&& sudo apt-get -y install --no-install-recommends google-chrome-stable
+
 # https://docs.cypress.io/guides/getting-started/installing-cypress#Ubuntu-Debian
 .PHONY: install-dependencies
 install-dependencies:

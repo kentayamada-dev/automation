@@ -36,12 +36,11 @@
 			"extensions": [
 				"ms-python.python",
 				"ms-python.vscode-pylance",
-				"eamodio.gitlens",
 				"Fooxly.themeswitch",
 				"albert.TabOut"
 			]
 		}
 	},
-	"postCreateCommand": "make install-packages && make install-dependencies",
+	"postCreateCommand": "make install-chrome && make install-packages && make install-dependencies",
 	"remoteUser": "vscode"
 }

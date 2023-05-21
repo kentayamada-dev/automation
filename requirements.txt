@@ -11,3 +11,4 @@ google-auth-oauthlib
 beautifulsoup4
 requests
 html5lib
+playwright
