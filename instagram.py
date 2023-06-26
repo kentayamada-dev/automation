@@ -104,10 +104,10 @@ def get_image() -> str:
             executable_path="/usr/bin/google-chrome-stable"
         )
         page = browser.new_page()
-        page.goto("https://www.midjourney.com/showcase/recent/") #https://www.fotor.com/images/inspiration
+        page.goto("https://www.fotor.com/images/inspiration")
         page.wait_for_timeout(3000)
         imgs = page.query_selector_all("img")
-        img = random.choice([img.get_attribute("src") for img in imgs if img.get_attribute("src") and img.get_attribute("src").endswith(".webp")])
+        img = random.choice([img.get_attribute("src") for img in imgs if img.get_attribute("src") and img.get_attribute("src").endswith(".src")])
         browser.close()
         return img or ""
 
