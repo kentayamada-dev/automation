@@ -107,7 +107,9 @@ def get_image() -> str:
         page.goto("https://www.fotor.com/images/inspiration")
         page.wait_for_timeout(3000)
         imgs = page.query_selector_all("img")
-        img = random.choice([img.get_attribute("src") for img in imgs if img.get_attribute("src") and img.get_attribute("src").endswith(".src")])
+        img_sources = [img.get_attribute("src") for img in imgs if img.get_attribute("src") and img.get_attribute("src").endswith(".src")]
+        filtered_imgs = [src for src in img_sources if "avatar" not in src]
+        img = random.choice(filtered_imgs) if filtered_imgs else ""
         browser.close()
         return img or ""
 
